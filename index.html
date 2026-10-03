@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#06111c">
+
+    <title>Panel | Lavado y Engrasado Esteban</title>
+
+    <meta
+        name="description"
+        content="Sistema de recibos, ingresos y gastos de Lavado y Engrasado Esteban."
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="imagenes/favicon.png"
+    >
+
+    <link rel="manifest" href="manifest.json">
+
+<link
+    rel="apple-touch-icon"
+    href="imagenes/icon-192.png"
+>
+
+<meta
+    name="mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="Lavado Esteban"
+>
+
+    <link
+        rel="apple-touch-icon"
+        href="imagenes/favicon.png"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/recibos.css"
+    >
+</head>
+
+<body>
+
+    <div
+        class="loading-screen"
+        id="loadingScreen"
+    >
+        <div class="loading-content">
+
+            <img
+                src="imagenes/logo.png"
+                alt="Lavado y Engrasado Esteban"
+            >
+
+            <div class="loading-spinner"></div>
+
+            <p>
+                Preparando sistema
+            </p>
+
+        </div>
+    </div>
+
+    <header class="app-header">
+
+        <div class="header-inner">
+
+            <a
+                href="index.html"
+                class="header-brand"
+            >
+                <div class="header-logo">
+                    <img
+                        src="imagenes/logo.png"
+                        alt="Lavado y Engrasado Esteban"
+                    >
+                </div>
+
+                <div class="header-brand-copy">
+                    <strong>
+                        ESTEBAN
+                    </strong>
+
+                    <span>
+                        Lavado y Engrasado
+                    </span>
+                </div>
+            </a>
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="header-user"
+                    id="userButton"
+                >
+                    <span class="user-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+
+                    <span class="user-copy">
+                        <small>
+                            Sesión iniciada
+                        </small>
+
+                        <strong id="headerUserName">
+                            Usuario
+                        </strong>
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+
+                <div
+                    class="user-menu"
+                    id="userMenu"
+                >
+                    <div class="user-menu-info">
+
+                        <div class="user-menu-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div>
+                            <strong id="menuUserName">
+                                Usuario
+                            </strong>
+
+                            <span id="menuUserEmail">
+                                correo@ejemplo.com
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="user-menu-divider"></div>
+
+                    <button
+                        type="button"
+                        class="logout-button"
+                        id="logoutButton"
+                    >
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                        Cerrar sesión
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="dashboard">
+
+        <section class="welcome-section">
+
+            <div class="welcome-copy">
+
+                <span class="welcome-label">
+                    <i class="fa-solid fa-droplet"></i>
+                    PANEL DE CONTROL
+                </span>
+
+                <h1>
+                    Hola,
+                    <span id="welcomeUserName">
+                        Usuario
+                    </span>
+                </h1>
+
+                <p>
+                    Registra un nuevo servicio y genera el recibo
+                    del cliente.
+                </p>
+
+            </div>
+
+            <div class="current-date-card">
+
+                <div class="date-icon">
+                    <i class="fa-regular fa-calendar"></i>
+                </div>
+
+                <div>
+                    <span id="currentDayName">
+                        Hoy
+                    </span>
+
+                    <strong id="currentDate">
+                        -- / -- / ----
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="quick-actions">
+
+            <button
+                type="button"
+                class="quick-action active"
+                id="newReceiptButton"
+            >
+                <span class="quick-action-icon blue">
+                    <i class="fa-solid fa-receipt"></i>
+                </span>
+
+                <span class="quick-action-copy">
+                    <strong>
+                        Nuevo recibo
+                    </strong>
+
+                    <small>
+                        Registrar servicio
+                    </small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <button
+                type="button"
+                class="quick-action"
+                id="viewReceiptsButton"
+            >
+                <span class="quick-action-icon cyan">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </span>
+
+                <span class="quick-action-copy">
+                    <strong>
+                        Todos los recibos
+                    </strong>
+
+                    <small>
+                        Ver historial
+                    </small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <button
+                type="button"
+                class="quick-action"
+                id="expensesButton"
+            >
+                <span class="quick-action-icon orange">
+                    <i class="fa-solid fa-wallet"></i>
+                </span>
+
+                <span class="quick-action-copy">
+                    <strong>
+                        Gastos
+                    </strong>
+
+                    <small>
+                        Registrar y consultar
+                    </small>
+                </span>
+
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </section>
+
+        <section class="business-summary">
+
+            <div class="section-heading">
+
+                <div>
+                    <span>
+                        RESUMEN
+                    </span>
+
+                    <h2>
+                        Movimiento de hoy
+                    </h2>
+                </div>
+
+                <span class="summary-live">
+                    <i></i>
+                    En tiempo real
+                </span>
+
+            </div>
+
+            <div class="summary-grid">
+
+                <article class="summary-card income-card">
+
+                    <div class="summary-card-top">
+
+                        <span class="summary-icon">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </span>
+
+                        <span class="summary-label">
+                            INGRESOS
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="summary-value"
+                        id="todayIncome"
+                    >
+                        $0.00
+                    </strong>
+
+                    <small>
+                        Recibos generados hoy
+                    </small>
+
+                </article>
+
+                <article class="summary-card expense-card">
+
+                    <div class="summary-card-top">
+
+                        <span class="summary-icon">
+                            <i class="fa-solid fa-arrow-trend-down"></i>
+                        </span>
+
+                        <span class="summary-label">
+                            GASTOS
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="summary-value"
+                        id="todayExpenses"
+                    >
+                        $0.00
+                    </strong>
+
+                    <small>
+                        Gastos registrados hoy
+                    </small>
+
+                </article>
+
+                <article class="summary-card profit-card">
+
+                    <div class="summary-card-top">
+
+                        <span class="summary-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </span>
+
+                        <span class="summary-label">
+                            GANANCIA
+                        </span>
+
+                    </div>
+
+                    <strong
+                        class="summary-value"
+                        id="todayProfit"
+                    >
+                        $0.00
+                    </strong>
+
+                    <small>
+                        Ingresos menos gastos
+                    </small>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section
+            class="receipt-section"
+            id="newReceiptSection"
+        >
+
+            <div class="section-heading receipt-heading">
+
+                <div>
+                    <span>
+                        NUEVO SERVICIO
+                    </span>
+
+                    <h2>
+                        Crear recibo
+                    </h2>
+                </div>
+
+                <div class="folio-preview">
+                    <small>
+                        SIGUIENTE FOLIO
+                    </small>
+
+                    <strong id="nextFolio">
+                        #----
+                    </strong>
+                </div>
+
+            </div>
+
+            <form
+                class="receipt-form"
+                id="receiptForm"
+                autocomplete="off"
+            >
+
+                <div class="automatic-info">
+
+                    <div class="automatic-item">
+
+                        <span class="automatic-icon">
+                            <i class="fa-regular fa-calendar"></i>
+                        </span>
+
+                        <div>
+                            <small>
+                                FECHA
+                            </small>
+
+                            <strong id="receiptDate">
+                                --/--/----
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <div class="automatic-item">
+
+                        <span class="automatic-icon">
+                            <i class="fa-regular fa-clock"></i>
+                        </span>
+
+                        <div>
+                            <small>
+                                HORA
+                            </small>
+
+                            <strong id="receiptTime">
+                                --:--
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <div class="automatic-item employee-item">
+
+                        <span class="automatic-icon">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+
+                        <div>
+                            <small>
+                                REGISTRA
+                            </small>
+
+                            <strong id="receiptEmployee">
+                                Usuario
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span>
+                            <i class="fa-solid fa-car"></i>
+                        </span>
+
+                        <div>
+                            <h3>
+                                Datos del servicio
+                            </h3>
+
+                            <p>
+                                Ingresa la información del cliente y vehículo.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+
+                            <label for="service">
+                                Servicio
+                                <span>*</span>
+                            </label>
+
+                            <div class="select-wrapper">
+
+                                <i class="fa-solid fa-soap"></i>
+
+                                <select
+                                    id="service"
+                                    name="service"
+                                    required
+                                >
+                                    <option value="">
+                                        Selecciona un servicio
+                                    </option>
+
+                                    <option value="Lavado">
+                                        Lavado
+                                    </option>
+
+                                    <option value="Lavado y engrasado">
+                                        Lavado y engrasado
+                                    </option>
+
+                                    <option value="Engrasado">
+                                        Engrasado
+                                    </option>
+
+                                    <option value="Otro">
+                                        Otro servicio
+                                    </option>
+                                </select>
+
+                                <i class="fa-solid fa-chevron-down"></i>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="customerName">
+                                Cliente
+                                <small>
+                                    Opcional
+                                </small>
+                            </label>
+
+                            <div class="input-wrapper-panel">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    id="customerName"
+                                    name="customerName"
+                                    placeholder="Nombre del cliente"
+                                    maxlength="80"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="vehicle">
+                                Vehículo
+                                <small>
+                                    Opcional
+                                </small>
+                            </label>
+
+                            <div class="input-wrapper-panel">
+
+                                <i class="fa-solid fa-car-side"></i>
+
+                                <input
+                                    type="text"
+                                    id="vehicle"
+                                    name="vehicle"
+                                    placeholder="Ej. Nissan Versa"
+                                    maxlength="80"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="plates">
+                                Placas
+                                <small>
+                                    Opcional
+                                </small>
+                            </label>
+
+                            <div class="input-wrapper-panel">
+
+                                <i class="fa-solid fa-id-card"></i>
+
+                                <input
+                                    type="text"
+                                    id="plates"
+                                    name="plates"
+                                    placeholder="ABC-123"
+                                    maxlength="20"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="paymentMethod">
+                                Método de pago
+                                <span>*</span>
+                            </label>
+
+                            <div class="select-wrapper">
+
+                                <i class="fa-solid fa-money-bill-wave"></i>
+
+                                <select
+                                    id="paymentMethod"
+                                    name="paymentMethod"
+                                    required
+                                >
+                                    <option value="Efectivo">
+                                        Efectivo
+                                    </option>
+
+                                    <option value="Transferencia">
+                                        Transferencia
+                                    </option>
+
+                                    <option value="Tarjeta">
+                                        Tarjeta
+                                    </option>
+
+                                    <option value="Otro">
+                                        Otro
+                                    </option>
+                                </select>
+
+                                <i class="fa-solid fa-chevron-down"></i>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="form-group full-width"
+                            id="otherServiceGroup"
+                            hidden
+                        >
+
+                            <label for="otherService">
+                                Especifica el servicio
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper-panel">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                                <input
+                                    type="text"
+                                    id="otherService"
+                                    name="otherService"
+                                    placeholder="Describe el servicio realizado"
+                                    maxlength="120"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group full-width">
+
+                            <label for="description">
+                                Descripción
+                                <small>
+                                    Opcional
+                                </small>
+                            </label>
+
+                            <div class="textarea-wrapper">
+
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    placeholder="Agrega alguna observación o detalle del servicio..."
+                                    maxlength="300"
+                                ></textarea>
+
+                                <span class="character-counter">
+                                    <strong id="descriptionCounter">
+                                        0
+                                    </strong>/300
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="amount-section">
+
+                    <div class="amount-copy">
+
+                        <span>
+                            TOTAL DEL SERVICIO
+                        </span>
+
+                        <p>
+                            Este monto se registrará como ingreso
+                            del autolavado.
+                        </p>
+
+                    </div>
+
+                    <div class="amount-input-wrapper">
+
+                        <span class="currency-symbol">
+                            $
+                        </span>
+
+                        <input
+                            type="number"
+                            id="amount"
+                            name="amount"
+                            placeholder="0.00"
+                            min="0.01"
+                            step="0.01"
+                            inputmode="decimal"
+                            required
+                        >
+
+                        <span class="currency-code">
+                            MXN
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="receipt-warning">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <p>
+                        Al generar el recibo, el movimiento también
+                        será registrado automáticamente como ingreso
+                        en el sistema financiero general.
+                    </p>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="generate-receipt-button"
+                    id="generateReceiptButton"
+                >
+
+                    <span class="generate-content">
+
+                        <span class="generate-icon">
+                            <i class="fa-solid fa-receipt"></i>
+                        </span>
+
+                        <span class="generate-copy">
+                            <strong>
+                                Generar recibo
+                            </strong>
+
+                            <small>
+                                Guardar servicio e ingreso
+                            </small>
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                    <span class="generate-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        <span>
+                            Generando recibo...
+                        </span>
+
+                    </span>
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <section class="recent-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span>
+                        ACTIVIDAD RECIENTE
+                    </span>
+
+                    <h2>
+                        Últimos recibos
+                    </h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="view-all-button"
+                    id="viewAllReceiptsButton"
+                >
+                    Ver todos
+
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+            <div
+                class="recent-receipts"
+                id="recentReceipts"
+            >
+
+                <div class="empty-state">
+
+                    <div class="empty-state-icon">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+
+                    <h3>
+                        Aún no hay recibos
+                    </h3>
+
+                    <p>
+                        Los últimos recibos generados aparecerán aquí.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <nav class="mobile-navigation">
+
+        <button
+            type="button"
+            class="mobile-nav-item active"
+            id="mobileHomeButton"
+        >
+            <i class="fa-solid fa-house"></i>
+
+            <span>
+                Inicio
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileReceiptsButton"
+        >
+            <i class="fa-solid fa-receipt"></i>
+
+            <span>
+                Recibos
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-create-button"
+            id="mobileCreateButton"
+            aria-label="Crear nuevo recibo"
+        >
+            <i class="fa-solid fa-plus"></i>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileExpensesButton"
+        >
+            <i class="fa-solid fa-wallet"></i>
+
+            <span>
+                Gastos
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileProfileButton"
+        >
+            <i class="fa-solid fa-user"></i>
+
+            <span>
+                Cuenta
+            </span>
+        </button>
+
+    </nav>
+
+    <div
+        class="modal"
+        id="receiptResultModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-receipt-modal
+        ></div>
+
+        <div class="receipt-result-card">
+
+            <button
+                type="button"
+                class="modal-close-button"
+                id="closeReceiptModal"
+                aria-label="Cerrar"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="success-animation">
+
+                <div class="success-circle">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <span>
+                    RECIBO GENERADO
+                </span>
+
+                <h2 id="generatedFolioTitle">
+                    #0000
+                </h2>
+
+                <p>
+                    El recibo fue guardado y el ingreso se registró
+                    correctamente.
+                </p>
+
+            </div>
+
+            <div
+                class="receipt-export-container"
+                id="receiptExportContainer"
+            >
+
+                <div class="export-receipt">
+
+                    <div class="export-header">
+
+                        <img
+                            src="imagenes/logo.png"
+                            alt="Lavado y Engrasado Esteban"
+                        >
+
+                        <span>
+                            RECIBO DE SERVICIO
+                        </span>
+
+                    </div>
+
+                    <div class="export-folio">
+
+                        <small>
+                            FOLIO
+                        </small>
+
+                        <strong id="exportFolio">
+                            #0000
+                        </strong>
+
+                    </div>
+
+                    <div class="export-divider"></div>
+
+                    <div class="export-info-grid">
+
+                        <div>
+                            <span>
+                                FECHA
+                            </span>
+
+                            <strong id="exportDate">
+                                --
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>
+                                HORA
+                            </span>
+
+                            <strong id="exportTime">
+                                --
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <div class="export-service">
+
+                        <span>
+                            SERVICIO
+                        </span>
+
+                        <strong id="exportService">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div
+                        class="export-optional-info"
+                        id="exportOptionalInfo"
+                    >
+
+                        <div id="exportCustomerRow">
+                            <span>
+                                Cliente
+                            </span>
+
+                            <strong id="exportCustomer">
+                                --
+                            </strong>
+                        </div>
+
+                        <div id="exportVehicleRow">
+                            <span>
+                                Vehículo
+                            </span>
+
+                            <strong id="exportVehicle">
+                                --
+                            </strong>
+                        </div>
+
+                        <div id="exportPlatesRow">
+                            <span>
+                                Placas
+                            </span>
+
+                            <strong id="exportPlates">
+                                --
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <div class="export-total">
+
+                        <span>
+                            TOTAL
+                        </span>
+
+                        <strong id="exportAmount">
+                            $0.00
+                        </strong>
+
+                        <small>
+                            MXN
+                        </small>
+
+                    </div>
+
+                    <div class="export-payment">
+
+                        <span>
+                            Método de pago
+                        </span>
+
+                        <strong id="exportPayment">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div class="export-divider"></div>
+
+                    <div class="export-attended">
+
+                        <span>
+                            Atendió
+                        </span>
+
+                        <strong id="exportEmployee">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div class="export-thanks">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                        <strong>
+                            ¡Gracias por visitarnos!
+                        </strong>
+
+                        <p>
+                            Gracias por confiar tu vehículo a
+                            Lavado y Engrasado Esteban.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="receipt-result-actions">
+
+                <button
+                    type="button"
+                    class="share-whatsapp-button"
+                    id="shareReceiptButton"
+                >
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    <span>
+                        Compartir recibo
+                    </span>
+                </button>
+
+                <button
+                    type="button"
+                    class="download-receipt-button"
+                    id="downloadReceiptButton"
+                >
+                    <i class="fa-solid fa-image"></i>
+
+                    <span>
+                        Guardar imagen
+                    </span>
+                </button>
+
+                <button
+                    type="button"
+                    class="new-receipt-after-button"
+                    id="newReceiptAfterButton"
+                >
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>
+                        Crear otro recibo
+                    </span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div
+        class="toast"
+        id="toast"
+        aria-live="polite"
+    >
+
+        <div class="toast-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div>
+            <strong id="toastTitle">
+                Listo
+            </strong>
+
+            <span id="toastMessage">
+                Operación realizada correctamente.
+            </span>
+        </div>
+
+    </div>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    ></script>
+
+    <script
+        type="module"
+        src="js/recibos.js"
+    ></script>
+
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", async () => {
+            try {
+                await navigator.serviceWorker.register("./sw.js");
+            } catch (error) {
+                console.error(
+                    "No se pudo registrar el Service Worker:",
+                    error
+                );
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

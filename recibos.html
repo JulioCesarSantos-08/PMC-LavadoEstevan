@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#06111c">
+
+    <title>Recibos | Lavado y Engrasado Esteban</title>
+
+    <meta
+        name="description"
+        content="Historial de recibos de Lavado y Engrasado Esteban."
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="imagenes/favicon.png"
+    >
+
+<link rel="manifest" href="manifest.json">
+
+<link
+    rel="apple-touch-icon"
+    href="imagenes/icon-192.png"
+>
+
+<meta
+    name="mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="Lavado Esteban"
+>
+
+    <link
+        rel="apple-touch-icon"
+        href="imagenes/favicon.png"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/recibos.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/historial.css"
+    >
+</head>
+
+<body>
+
+    <div
+        class="loading-screen"
+        id="loadingScreen"
+    >
+        <div class="loading-content">
+
+            <img
+                src="imagenes/logo.png"
+                alt="Lavado y Engrasado Esteban"
+            >
+
+            <div class="loading-spinner"></div>
+
+            <p>
+                Cargando recibos
+            </p>
+
+        </div>
+    </div>
+
+    <header class="app-header">
+
+        <div class="header-inner">
+
+            <a
+                href="index.html"
+                class="header-brand"
+            >
+                <div class="header-logo">
+
+                    <img
+                        src="imagenes/logo.png"
+                        alt="Lavado y Engrasado Esteban"
+                    >
+
+                </div>
+
+                <div class="header-brand-copy">
+
+                    <strong>
+                        ESTEBAN
+                    </strong>
+
+                    <span>
+                        Lavado y Engrasado
+                    </span>
+
+                </div>
+            </a>
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="header-user"
+                    id="userButton"
+                >
+
+                    <span class="user-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+
+                    <span class="user-copy">
+
+                        <small>
+                            Sesión iniciada
+                        </small>
+
+                        <strong id="headerUserName">
+                            Usuario
+                        </strong>
+
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div
+                    class="user-menu"
+                    id="userMenu"
+                >
+
+                    <div class="user-menu-info">
+
+                        <div class="user-menu-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div>
+
+                            <strong id="menuUserName">
+                                Usuario
+                            </strong>
+
+                            <span id="menuUserEmail">
+                                correo@ejemplo.com
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="user-menu-divider"></div>
+
+                    <button
+                        type="button"
+                        class="logout-button"
+                        id="logoutButton"
+                    >
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                        Cerrar sesión
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="history-page">
+
+        <section class="history-heading">
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="back-link"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Volver al panel
+                </a>
+
+                <span class="history-eyebrow">
+                    <i class="fa-solid fa-receipt"></i>
+
+                    HISTORIAL
+                </span>
+
+                <h1>
+                    Todos los recibos
+                </h1>
+
+                <p>
+                    Consulta, comparte, edita o elimina los recibos
+                    registrados en el sistema.
+                </p>
+
+            </div>
+
+            <a
+                href="index.html#newReceiptSection"
+                class="history-new-button"
+            >
+                <i class="fa-solid fa-plus"></i>
+
+                Nuevo recibo
+            </a>
+
+        </section>
+
+        <section class="history-stats">
+
+            <article class="history-stat-card">
+
+                <span class="history-stat-icon blue">
+                    <i class="fa-solid fa-receipt"></i>
+                </span>
+
+                <div>
+
+                    <small>
+                        RECIBOS
+                    </small>
+
+                    <strong id="totalReceipts">
+                        0
+                    </strong>
+
+                    <span>
+                        Registrados
+                    </span>
+
+                </div>
+
+            </article>
+
+            <article class="history-stat-card">
+
+                <span class="history-stat-icon green">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                </span>
+
+                <div>
+
+                    <small>
+                        INGRESOS
+                    </small>
+
+                    <strong id="totalReceiptIncome">
+                        $0.00
+                    </strong>
+
+                    <span>
+                        Recibos mostrados
+                    </span>
+
+                </div>
+
+            </article>
+
+            <article class="history-stat-card">
+
+                <span class="history-stat-icon cyan">
+                    <i class="fa-solid fa-calendar-day"></i>
+                </span>
+
+                <div>
+
+                    <small>
+                        HOY
+                    </small>
+
+                    <strong id="todayReceiptCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Recibos generados
+                    </span>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <section class="history-controls">
+
+            <div class="history-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="search"
+                    id="receiptSearch"
+                    placeholder="Buscar folio, cliente, vehículo o placas..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="clearSearchButton"
+                    aria-label="Limpiar búsqueda"
+                    hidden
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <div class="history-filters">
+
+                <div class="history-select">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <select id="dateFilter">
+
+                        <option value="all">
+                            Todas las fechas
+                        </option>
+
+                        <option value="today">
+                            Hoy
+                        </option>
+
+                        <option value="week">
+                            Esta semana
+                        </option>
+
+                        <option value="month">
+                            Este mes
+                        </option>
+
+                    </select>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+                <div class="history-select">
+
+                    <i class="fa-solid fa-money-bill-wave"></i>
+
+                    <select id="paymentFilter">
+
+                        <option value="all">
+                            Todos los pagos
+                        </option>
+
+                        <option value="Efectivo">
+                            Efectivo
+                        </option>
+
+                        <option value="Transferencia">
+                            Transferencia
+                        </option>
+
+                        <option value="Tarjeta">
+                            Tarjeta
+                        </option>
+
+                        <option value="Otro">
+                            Otro
+                        </option>
+
+                    </select>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="receipts-panel">
+
+            <div class="receipts-panel-header">
+
+                <div>
+
+                    <span>
+                        RESULTADOS
+                    </span>
+
+                    <h2 id="resultsTitle">
+                        Recibos registrados
+                    </h2>
+
+                </div>
+
+                <span
+                    class="results-count"
+                    id="resultsCount"
+                >
+                    0 resultados
+                </span>
+
+            </div>
+
+            <div
+                class="receipts-list"
+                id="receiptsList"
+            >
+
+                <div class="empty-state">
+
+                    <div class="loading-spinner"></div>
+
+                    <p style="margin-top: 12px;">
+                        Cargando recibos...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <nav class="mobile-navigation">
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileHomeButton"
+        >
+            <i class="fa-solid fa-house"></i>
+
+            <span>
+                Inicio
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item active"
+            id="mobileReceiptsButton"
+        >
+            <i class="fa-solid fa-receipt"></i>
+
+            <span>
+                Recibos
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-create-button"
+            id="mobileCreateButton"
+            aria-label="Crear recibo"
+        >
+            <i class="fa-solid fa-plus"></i>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileExpensesButton"
+        >
+            <i class="fa-solid fa-wallet"></i>
+
+            <span>
+                Gastos
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileProfileButton"
+        >
+            <i class="fa-solid fa-user"></i>
+
+            <span>
+                Cuenta
+            </span>
+        </button>
+
+    </nav>
+
+    <div
+        class="modal"
+        id="receiptDetailModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-detail
+        ></div>
+
+        <div class="history-detail-card">
+
+            <button
+                type="button"
+                class="history-modal-close"
+                id="closeDetailModal"
+                aria-label="Cerrar"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="detail-modal-heading">
+
+                <span>
+                    RECIBO
+                </span>
+
+                <h2 id="detailFolio">
+                    #0000
+                </h2>
+
+                <p id="detailStatus">
+                    Recibo activo
+                </p>
+
+            </div>
+
+            <div
+                class="receipt-export-container"
+                id="receiptExportContainer"
+            >
+
+                <div class="export-receipt">
+
+                    <div class="export-header">
+
+                        <img
+                            src="imagenes/logo.png"
+                            alt="Lavado y Engrasado Esteban"
+                        >
+
+                        <span>
+                            RECIBO DE SERVICIO
+                        </span>
+
+                    </div>
+
+                    <div class="export-folio">
+
+                        <small>
+                            FOLIO
+                        </small>
+
+                        <strong id="exportFolio">
+                            #0000
+                        </strong>
+
+                    </div>
+
+                    <div class="export-divider"></div>
+
+                    <div class="export-info-grid">
+
+                        <div>
+
+                            <span>
+                                FECHA
+                            </span>
+
+                            <strong id="exportDate">
+                                --
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                HORA
+                            </span>
+
+                            <strong id="exportTime">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="export-service">
+
+                        <span>
+                            SERVICIO
+                        </span>
+
+                        <strong id="exportService">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div
+                        class="export-optional-info"
+                        id="exportOptionalInfo"
+                    >
+
+                        <div id="exportCustomerRow">
+
+                            <span>
+                                Cliente
+                            </span>
+
+                            <strong id="exportCustomer">
+                                --
+                            </strong>
+
+                        </div>
+
+                        <div id="exportVehicleRow">
+
+                            <span>
+                                Vehículo
+                            </span>
+
+                            <strong id="exportVehicle">
+                                --
+                            </strong>
+
+                        </div>
+
+                        <div id="exportPlatesRow">
+
+                            <span>
+                                Placas
+                            </span>
+
+                            <strong id="exportPlates">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="export-total">
+
+                        <span>
+                            TOTAL
+                        </span>
+
+                        <strong id="exportAmount">
+                            $0.00
+                        </strong>
+
+                        <small>
+                            MXN
+                        </small>
+
+                    </div>
+
+                    <div class="export-payment">
+
+                        <span>
+                            Método de pago
+                        </span>
+
+                        <strong id="exportPayment">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div class="export-divider"></div>
+
+                    <div class="export-attended">
+
+                        <span>
+                            Atendió
+                        </span>
+
+                        <strong id="exportEmployee">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div class="export-thanks">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                        <strong>
+                            ¡Gracias por visitarnos!
+                        </strong>
+
+                        <p>
+                            Gracias por confiar tu vehículo a
+                            Lavado y Engrasado Esteban.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-actions">
+
+                <button
+                    type="button"
+                    class="history-share-button"
+                    id="shareReceiptButton"
+                >
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    Compartir
+                </button>
+
+                <button
+                    type="button"
+                    class="history-download-button"
+                    id="downloadReceiptButton"
+                >
+                    <i class="fa-solid fa-image"></i>
+
+                    Guardar PNG
+                </button>
+
+                <button
+                    type="button"
+                    class="history-edit-button"
+                    id="editReceiptButton"
+                >
+                    <i class="fa-solid fa-pen"></i>
+
+                    Editar
+                </button>
+
+                <button
+                    type="button"
+                    class="history-delete-button"
+                    id="deleteReceiptButton"
+                >
+                    <i class="fa-solid fa-trash"></i>
+
+                    Eliminar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div
+        class="modal"
+        id="editReceiptModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-edit
+        ></div>
+
+        <div class="history-form-modal">
+
+            <div class="history-form-header">
+
+                <div>
+
+                    <span>
+                        MODIFICAR
+                    </span>
+
+                    <h2>
+                        Editar recibo
+                    </h2>
+
+                    <p id="editReceiptFolio">
+                        #0000
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="history-modal-close"
+                    id="closeEditModal"
+                    aria-label="Cerrar"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <form
+                id="editReceiptForm"
+                class="history-edit-form"
+                autocomplete="off"
+            >
+
+                <div class="form-group">
+
+                    <label for="editService">
+                        Servicio
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editService"
+                        maxlength="120"
+                        required
+                    >
+
+                </div>
+
+                <div class="history-edit-grid">
+
+                    <div class="form-group">
+
+                        <label for="editCustomer">
+                            Cliente
+                        </label>
+
+                        <input
+                            type="text"
+                            id="editCustomer"
+                            maxlength="80"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="editVehicle">
+                            Vehículo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="editVehicle"
+                            maxlength="80"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="editPlates">
+                            Placas
+                        </label>
+
+                        <input
+                            type="text"
+                            id="editPlates"
+                            maxlength="20"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="editPayment">
+                            Método de pago
+                        </label>
+
+                        <select id="editPayment">
+
+                            <option value="Efectivo">
+                                Efectivo
+                            </option>
+
+                            <option value="Transferencia">
+                                Transferencia
+                            </option>
+
+                            <option value="Tarjeta">
+                                Tarjeta
+                            </option>
+
+                            <option value="Otro">
+                                Otro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="editDescription">
+                        Descripción
+                    </label>
+
+                    <textarea
+                        id="editDescription"
+                        maxlength="300"
+                    ></textarea>
+
+                </div>
+
+                <div class="form-group edit-amount-group">
+
+                    <label for="editAmount">
+                        Total del servicio
+                        <span>*</span>
+                    </label>
+
+                    <div class="edit-money-input">
+
+                        <span>
+                            $
+                        </span>
+
+                        <input
+                            type="number"
+                            id="editAmount"
+                            min="0.01"
+                            step="0.01"
+                            inputmode="decimal"
+                            required
+                        >
+
+                        <small>
+                            MXN
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="edit-finance-notice">
+
+                    <i class="fa-solid fa-rotate"></i>
+
+                    <p>
+                        Si modificas el monto, también se actualizará
+                        el ingreso relacionado en el sistema financiero.
+                    </p>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="save-edit-button"
+                    id="saveEditButton"
+                >
+
+                    <span class="save-edit-content">
+
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        Guardar cambios
+
+                    </span>
+
+                    <span class="save-edit-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        Guardando...
+
+                    </span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div
+        class="modal"
+        id="deleteReceiptModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-delete
+        ></div>
+
+        <div class="delete-confirm-card">
+
+            <div class="delete-confirm-icon">
+                <i class="fa-solid fa-trash"></i>
+            </div>
+
+            <span>
+                ELIMINAR RECIBO
+            </span>
+
+            <h2 id="deleteReceiptFolio">
+                #0000
+            </h2>
+
+            <p>
+                ¿Seguro que deseas eliminar este recibo?
+            </p>
+
+            <div class="delete-warning">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <span>
+                    El ingreso relacionado también dejará de
+                    contabilizarse en Finanzas.
+                </span>
+
+            </div>
+
+            <div class="delete-confirm-actions">
+
+                <button
+                    type="button"
+                    class="cancel-delete-button"
+                    id="cancelDeleteButton"
+                >
+                    No, conservar
+                </button>
+
+                <button
+                    type="button"
+                    class="confirm-delete-button"
+                    id="confirmDeleteButton"
+                >
+
+                    <span class="delete-button-content">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Sí, eliminar
+
+                    </span>
+
+                    <span class="delete-button-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        Eliminando...
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div
+        class="toast"
+        id="toast"
+        aria-live="polite"
+    >
+
+        <div class="toast-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div>
+
+            <strong id="toastTitle">
+                Listo
+            </strong>
+
+            <span id="toastMessage">
+                Operación realizada correctamente.
+            </span>
+
+        </div>
+
+    </div>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    ></script>
+
+    <script
+        type="module"
+        src="js/historial.js"
+    ></script>
+
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", async () => {
+            try {
+                await navigator.serviceWorker.register("./sw.js");
+            } catch (error) {
+                console.error(
+                    "No se pudo registrar el Service Worker:",
+                    error
+                );
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

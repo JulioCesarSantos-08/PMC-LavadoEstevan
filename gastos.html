@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#06111c">
+
+    <title>Gastos | Lavado y Engrasado Esteban</title>
+
+    <meta
+        name="description"
+        content="Control de gastos de Lavado y Engrasado Esteban."
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="imagenes/favicon.png"
+    >
+
+    <link rel="manifest" href="manifest.json">
+
+<link
+    rel="apple-touch-icon"
+    href="imagenes/icon-192.png"
+>
+
+<meta
+    name="mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="Lavado Esteban"
+>
+
+    <link
+        rel="apple-touch-icon"
+        href="imagenes/favicon.png"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/gastos.css"
+    >
+</head>
+
+<body>
+
+    <div
+        class="loading-screen"
+        id="loadingScreen"
+    >
+        <div class="loading-content">
+
+            <img
+                src="imagenes/logo.png"
+                alt="Lavado y Engrasado Esteban"
+            >
+
+            <div class="loading-spinner"></div>
+
+            <p>
+                Cargando gastos
+            </p>
+
+        </div>
+    </div>
+
+    <header class="app-header">
+
+        <div class="header-inner">
+
+            <a
+                href="index.html"
+                class="header-brand"
+            >
+                <div class="header-logo">
+
+                    <img
+                        src="imagenes/logo.png"
+                        alt="Lavado y Engrasado Esteban"
+                    >
+
+                </div>
+
+                <div class="header-brand-copy">
+
+                    <strong>
+                        ESTEBAN
+                    </strong>
+
+                    <span>
+                        Lavado y Engrasado
+                    </span>
+
+                </div>
+            </a>
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="header-user"
+                    id="userButton"
+                >
+
+                    <span class="user-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+
+                    <span class="user-copy">
+
+                        <small>
+                            Sesión iniciada
+                        </small>
+
+                        <strong id="headerUserName">
+                            Usuario
+                        </strong>
+
+                    </span>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+                <div
+                    class="user-menu"
+                    id="userMenu"
+                >
+
+                    <div class="user-menu-info">
+
+                        <div class="user-menu-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div>
+
+                            <strong id="menuUserName">
+                                Usuario
+                            </strong>
+
+                            <span id="menuUserEmail">
+                                correo@ejemplo.com
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="user-menu-divider"></div>
+
+                    <button
+                        type="button"
+                        class="logout-button"
+                        id="logoutButton"
+                    >
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                        Cerrar sesión
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="expenses-page">
+
+        <section class="expenses-heading">
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="back-link"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Volver al panel
+                </a>
+
+                <span class="expenses-eyebrow">
+                    <i class="fa-solid fa-wallet"></i>
+
+                    CONTROL DEL NEGOCIO
+                </span>
+
+                <h1>
+                    Gastos
+                </h1>
+
+                <p>
+                    Registra los gastos del autolavado y consulta
+                    la utilidad real del negocio.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="new-expense-button"
+                id="newExpenseButton"
+            >
+                <i class="fa-solid fa-plus"></i>
+
+                Registrar gasto
+            </button>
+
+        </section>
+
+        <section class="business-summary">
+
+            <article class="summary-card income">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-icon">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </span>
+
+                    <span class="summary-period">
+                        Este mes
+                    </span>
+
+                </div>
+
+                <small>
+                    INGRESOS
+                </small>
+
+                <strong id="monthIncome">
+                    $0.00
+                </strong>
+
+                <p>
+                    Recibos del autolavado
+                </p>
+
+            </article>
+
+            <article class="summary-card expense">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-icon">
+                        <i class="fa-solid fa-arrow-trend-down"></i>
+                    </span>
+
+                    <span class="summary-period">
+                        Este mes
+                    </span>
+
+                </div>
+
+                <small>
+                    GASTOS
+                </small>
+
+                <strong id="monthExpenses">
+                    $0.00
+                </strong>
+
+                <p>
+                    Gastos registrados
+                </p>
+
+            </article>
+
+            <article class="summary-card profit">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </span>
+
+                    <span class="summary-period">
+                        Este mes
+                    </span>
+
+                </div>
+
+                <small>
+                    GANANCIA REAL
+                </small>
+
+                <strong id="monthProfit">
+                    $0.00
+                </strong>
+
+                <p>
+                    Ingresos menos gastos
+                </p>
+
+            </article>
+
+        </section>
+
+        <section class="finance-chart-card">
+
+            <div class="finance-chart-header">
+
+                <div>
+
+                    <span>
+                        COMPORTAMIENTO
+                    </span>
+
+                    <h2>
+                        Ingresos vs gastos
+                    </h2>
+
+                    <p>
+                        Comparación de los últimos 7 días.
+                    </p>
+
+                </div>
+
+                <div class="chart-legend">
+
+                    <span>
+                        <i class="legend-income"></i>
+                        Ingresos
+                    </span>
+
+                    <span>
+                        <i class="legend-expense"></i>
+                        Gastos
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+
+                <canvas id="financeChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <section
+            class="expense-form-card"
+            id="expenseFormSection"
+        >
+
+            <div class="expense-form-heading">
+
+                <div class="expense-form-icon">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        NUEVO MOVIMIENTO
+                    </span>
+
+                    <h2>
+                        Registrar gasto
+                    </h2>
+
+                    <p>
+                        Este gasto también se reflejará en PMC Finanzas.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <form
+                id="expenseForm"
+                class="expense-form"
+                autocomplete="off"
+            >
+
+                <div class="form-group">
+
+                    <label for="expenseConcept">
+                        Concepto
+                        <span>*</span>
+                    </label>
+
+                    <div class="field-shell">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                        <input
+                            type="text"
+                            id="expenseConcept"
+                            maxlength="120"
+                            placeholder="Ej. Compra de shampoo para autos"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="expense-form-grid">
+
+                    <div class="form-group">
+
+                        <label for="expenseCategory">
+                            Categoría
+                            <span>*</span>
+                        </label>
+
+                        <div class="field-shell">
+
+                            <i class="fa-solid fa-layer-group"></i>
+
+                            <select
+                                id="expenseCategory"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecciona una categoría
+                                </option>
+
+                                <option value="Productos y químicos">
+                                    Productos y químicos
+                                </option>
+
+                                <option value="Herramientas">
+                                    Herramientas
+                                </option>
+
+                                <option value="Mantenimiento">
+                                    Mantenimiento
+                                </option>
+
+                                <option value="Refacciones">
+                                    Refacciones
+                                </option>
+
+                                <option value="Servicios">
+                                    Servicios
+                                </option>
+
+                                <option value="Combustible">
+                                    Combustible
+                                </option>
+
+                                <option value="Limpieza">
+                                    Limpieza
+                                </option>
+
+                                <option value="Personal">
+                                    Personal
+                                </option>
+
+                                <option value="Otro">
+                                    Otro
+                                </option>
+
+                            </select>
+
+                            <i class="select-arrow fa-solid fa-chevron-down"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="expensePayment">
+                            Método de pago
+                        </label>
+
+                        <div class="field-shell">
+
+                            <i class="fa-solid fa-money-bill-wave"></i>
+
+                            <select id="expensePayment">
+
+                                <option value="Efectivo">
+                                    Efectivo
+                                </option>
+
+                                <option value="Transferencia">
+                                    Transferencia
+                                </option>
+
+                                <option value="Tarjeta">
+                                    Tarjeta
+                                </option>
+
+                                <option value="Otro">
+                                    Otro
+                                </option>
+
+                            </select>
+
+                            <i class="select-arrow fa-solid fa-chevron-down"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="expenseDescription">
+                        Descripción
+                    </label>
+
+                    <div class="field-shell textarea-shell">
+
+                        <i class="fa-solid fa-align-left"></i>
+
+                        <textarea
+                            id="expenseDescription"
+                            maxlength="300"
+                            placeholder="Información adicional del gasto..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="expense-amount-block">
+
+                    <div>
+
+                        <span class="expense-amount-label">
+                            MONTO DEL GASTO
+                        </span>
+
+                        <p>
+                            Escribe el total pagado
+                        </p>
+
+                    </div>
+
+                    <div class="expense-money-input">
+
+                        <span>
+                            $
+                        </span>
+
+                        <input
+                            type="number"
+                            id="expenseAmount"
+                            min="0.01"
+                            step="0.01"
+                            inputmode="decimal"
+                            placeholder="0.00"
+                            required
+                        >
+
+                        <small>
+                            MXN
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="finance-sync-notice">
+
+                    <span>
+                        <i class="fa-solid fa-link"></i>
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Sincronizado con Finanzas
+                        </strong>
+
+                        <p>
+                            Al guardar este gasto se registrará también
+                            como egreso de Autolavado en el sistema
+                            financiero general.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="save-expense-button"
+                    id="saveExpenseButton"
+                >
+
+                    <span class="save-expense-content">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Registrar gasto
+
+                    </span>
+
+                    <span class="save-expense-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        Guardando...
+
+                    </span>
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <section class="expenses-history-card">
+
+            <div class="expenses-history-header">
+
+                <div>
+
+                    <span>
+                        HISTORIAL
+                    </span>
+
+                    <h2>
+                        Gastos registrados
+                    </h2>
+
+                </div>
+
+                <span
+                    class="expenses-count"
+                    id="expensesCount"
+                >
+                    0 gastos
+                </span>
+
+            </div>
+
+            <div class="expenses-tools">
+
+                <div class="expenses-search">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="expenseSearch"
+                        placeholder="Buscar gasto..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        id="clearExpenseSearch"
+                        aria-label="Limpiar búsqueda"
+                        hidden
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                </div>
+
+                <div class="expenses-filter">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <select id="expenseDateFilter">
+
+                        <option value="all">
+                            Todos
+                        </option>
+
+                        <option value="today">
+                            Hoy
+                        </option>
+
+                        <option value="week">
+                            Esta semana
+                        </option>
+
+                        <option value="month">
+                            Este mes
+                        </option>
+
+                    </select>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+            </div>
+
+            <div
+                class="expenses-list"
+                id="expensesList"
+            >
+
+                <div class="empty-state">
+
+                    <div class="loading-spinner"></div>
+
+                    <p style="margin-top: 12px;">
+                        Cargando gastos...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <nav class="mobile-navigation">
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileHomeButton"
+        >
+            <i class="fa-solid fa-house"></i>
+
+            <span>
+                Inicio
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileReceiptsButton"
+        >
+            <i class="fa-solid fa-receipt"></i>
+
+            <span>
+                Recibos
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-create-button"
+            id="mobileCreateButton"
+            aria-label="Registrar gasto"
+        >
+            <i class="fa-solid fa-plus"></i>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item active"
+            id="mobileExpensesButton"
+        >
+            <i class="fa-solid fa-wallet"></i>
+
+            <span>
+                Gastos
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="mobile-nav-item"
+            id="mobileProfileButton"
+        >
+            <i class="fa-solid fa-user"></i>
+
+            <span>
+                Cuenta
+            </span>
+        </button>
+
+    </nav>
+
+    <div
+        class="modal"
+        id="editExpenseModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-expense-edit
+        ></div>
+
+        <div class="expense-modal-card">
+
+            <div class="expense-modal-header">
+
+                <div>
+
+                    <span>
+                        MODIFICAR
+                    </span>
+
+                    <h2>
+                        Editar gasto
+                    </h2>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="expense-modal-close"
+                    id="closeExpenseEditModal"
+                    aria-label="Cerrar"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <form
+                id="editExpenseForm"
+                class="edit-expense-form"
+                autocomplete="off"
+            >
+
+                <div class="form-group">
+
+                    <label for="editExpenseConcept">
+                        Concepto
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editExpenseConcept"
+                        maxlength="120"
+                        required
+                    >
+
+                </div>
+
+                <div class="edit-expense-grid">
+
+                    <div class="form-group">
+
+                        <label for="editExpenseCategory">
+                            Categoría
+                        </label>
+
+                        <select id="editExpenseCategory">
+
+                            <option value="Productos y químicos">
+                                Productos y químicos
+                            </option>
+
+                            <option value="Herramientas">
+                                Herramientas
+                            </option>
+
+                            <option value="Mantenimiento">
+                                Mantenimiento
+                            </option>
+
+                            <option value="Refacciones">
+                                Refacciones
+                            </option>
+
+                            <option value="Servicios">
+                                Servicios
+                            </option>
+
+                            <option value="Combustible">
+                                Combustible
+                            </option>
+
+                            <option value="Limpieza">
+                                Limpieza
+                            </option>
+
+                            <option value="Personal">
+                                Personal
+                            </option>
+
+                            <option value="Otro">
+                                Otro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="editExpensePayment">
+                            Método de pago
+                        </label>
+
+                        <select id="editExpensePayment">
+
+                            <option value="Efectivo">
+                                Efectivo
+                            </option>
+
+                            <option value="Transferencia">
+                                Transferencia
+                            </option>
+
+                            <option value="Tarjeta">
+                                Tarjeta
+                            </option>
+
+                            <option value="Otro">
+                                Otro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="editExpenseDescription">
+                        Descripción
+                    </label>
+
+                    <textarea
+                        id="editExpenseDescription"
+                        maxlength="300"
+                    ></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="editExpenseAmount">
+                        Monto
+                        <span>*</span>
+                    </label>
+
+                    <div class="edit-expense-money">
+
+                        <span>
+                            $
+                        </span>
+
+                        <input
+                            type="number"
+                            id="editExpenseAmount"
+                            min="0.01"
+                            step="0.01"
+                            inputmode="decimal"
+                            required
+                        >
+
+                        <small>
+                            MXN
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="expense-update-notice">
+
+                    <i class="fa-solid fa-rotate"></i>
+
+                    <p>
+                        Los cambios también actualizarán el mismo
+                        egreso relacionado en PMC Finanzas.
+                    </p>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="update-expense-button"
+                    id="updateExpenseButton"
+                >
+
+                    <span class="update-expense-content">
+
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        Guardar cambios
+
+                    </span>
+
+                    <span class="update-expense-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        Guardando...
+
+                    </span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div
+        class="modal"
+        id="deleteExpenseModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-backdrop"
+            data-close-expense-delete
+        ></div>
+
+        <div class="delete-expense-card">
+
+            <div class="delete-expense-icon">
+                <i class="fa-solid fa-trash"></i>
+            </div>
+
+            <span>
+                ELIMINAR GASTO
+            </span>
+
+            <h2 id="deleteExpenseTitle">
+                Gasto
+            </h2>
+
+            <p>
+                ¿Seguro que deseas eliminar este gasto?
+            </p>
+
+            <div class="delete-expense-warning">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <span>
+                    El egreso relacionado también dejará de
+                    contabilizarse en PMC Finanzas.
+                </span>
+
+            </div>
+
+            <div class="delete-expense-actions">
+
+                <button
+                    type="button"
+                    class="cancel-expense-delete"
+                    id="cancelExpenseDelete"
+                >
+                    No, conservar
+                </button>
+
+                <button
+                    type="button"
+                    class="confirm-expense-delete"
+                    id="confirmExpenseDelete"
+                >
+
+                    <span class="expense-delete-content">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Sí, eliminar
+
+                    </span>
+
+                    <span class="expense-delete-loading">
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        Eliminando...
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div
+        class="toast"
+        id="toast"
+        aria-live="polite"
+    >
+
+        <div class="toast-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div>
+
+            <strong id="toastTitle">
+                Listo
+            </strong>
+
+            <span id="toastMessage">
+                Operación realizada correctamente.
+            </span>
+
+        </div>
+
+    </div>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"
+    ></script>
+
+    <script
+        type="module"
+        src="js/gastos.js"
+    ></script>
+
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", async () => {
+            try {
+                await navigator.serviceWorker.register("./sw.js");
+            } catch (error) {
+                console.error(
+                    "No se pudo registrar el Service Worker:",
+                    error
+                );
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
